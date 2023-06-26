@@ -42,8 +42,10 @@ class CaseDetailParser:
         try:
             return self._top_row_second_cell
         except AttributeError:
-            h2 = soup.find("h2", class_="styletop")
-            table = h2.find_next("table")
+            #h2 = soup.find("h2", class_="styletop")
+            #table = h2.find_next("table")
+            res_title = soup.find("div",class_="resultsTitle")
+            table = res_title.find_next("table")
             first_row = table.find_all("tr")[0]
             self._top_row_second_cell = first_row.find_all("td")[-1]
         return self._top_row_second_cell
